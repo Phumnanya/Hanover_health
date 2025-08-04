@@ -68,7 +68,7 @@ function LandingPage() {
                 <div className="w-1/4 m-2 box-border">
                     <Link to={"/info/hepatitis_b"}>
                         <Diseases
-                        pic="malaria.jpg" alt="Hepatitis B" topic="Hepatitis B"
+                        pic="hepatitis.jpg" alt="Hepatitis B" topic="Hepatitis B"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
                         ante eget aliquam venenatis. Donec congue at ligula in cursus"
                         />
@@ -78,7 +78,7 @@ function LandingPage() {
                 <div className="w-1/4 m-2 box-border">
                     <Link to={"/info/hiv"}>
                         <Diseases
-                        pic="malaria.jpg" alt="HIV/AIDS" topic="HIV/AIDS"
+                        pic="hiv.jpg" alt="HIV/AIDS" topic="HIV/AIDS"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
                         ante eget aliquam venenatis. Donec congue at ligula in cursus"
                         />
@@ -141,3 +141,4 @@ function LandingPage() {
 
 
 export default LandingPage;
+

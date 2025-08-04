@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    h2 {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    h3 {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    h4 {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    h5 {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    p {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    b {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+    i {
+        font-size: revert !important;
+        font-weight: revert !important;
+    }
+}

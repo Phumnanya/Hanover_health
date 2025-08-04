@@ -107,11 +107,7 @@ function LandingPage() {
             </div>
             {/**Diseases Carousel */}
             <div className="md:hidden">
-                <Carousel
-                pic="malaria.jpg" alt="malaria" topic="Malaria"
-                desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                ante eget aliquam venenatis. Donec congue at ligula in cursus"
-                 />
+                <Carousel />
             </div>
 
             {/**Footer notes */}
@@ -142,5 +138,6 @@ function LandingPage() {
         </>
     )
 }
+
 
 export default LandingPage;

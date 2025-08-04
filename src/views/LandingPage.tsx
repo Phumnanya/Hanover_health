@@ -98,9 +98,7 @@ function LandingPage() {
                 <div className="w-1/4 m-2 box-border">
                     <Link to={"/overviewpage"}>
                         <Diseases
-                        pic="malaria.jpg" alt="malaria" topic="Malaria"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        pic="more.jpg" alt="see more" topic="see more"
                         />
                     </Link>
                 </div>
@@ -141,4 +139,5 @@ function LandingPage() {
 
 
 export default LandingPage;
+
 

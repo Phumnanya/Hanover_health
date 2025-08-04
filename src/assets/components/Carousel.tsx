@@ -10,19 +10,8 @@ interface tiles1 {
     desc: string;
 }
 
-type pico = string
-type alto = string
-type topico = string
-type desco = string
 
-type properties = {
-  prop1: pico,
-  prop2: alto,
-  prop3: topico,
-  prop4: desco,
-}
-
-export default function Carousel({pic, alt, topic, desc} : tiles1) {
+export default function Carousel({pic?, alt?, topic?, desc?} : tiles1) {
     return(
         <Splide
       options={{
@@ -36,33 +25,34 @@ export default function Carousel({pic, alt, topic, desc} : tiles1) {
       className="mb-10"
     >
         <SplideSlide className="p-5">
-          <Link to={"/infopage"}>
+          <Link to={"/info/hepatitis_b"}>
             <img src={`/img/${pic}`} alt={`/img/${alt}`} className="w-full h-60 m-auto object-cover" />
-            <h3 className="my-3">{topic}</h3>
+            <h3 className="my-3">Hepatitis B</h3>
             <p className="line-clamp-3">{desc}</p>
           </Link>
         </SplideSlide>
         <SplideSlide className="p-5">
-          <Link to={"/infopage"}>
+          <Link to={"/info/hiv"}>
             <img src={`/img/${pic}`} alt={`/img/${alt}`} className="w-full h-60 m-auto object-cover" />
-            <h3 className="my-3">{topic}</h3>
+            <h3 className="my-3">HIV</h3>
             <p className="line-clamp-3">{desc}</p>
           </Link>
         </SplideSlide>
         <SplideSlide className="p-5">
-          <Link to={"/infopage"}>
+          <Link to={"/info/malaria"}>
             <img src={`/img/${pic}`} alt={`/img/${alt}`} className="w-full h-60 m-auto object-cover" />
-            <h3 className="my-3">{topic}</h3>
+            <h3 className="my-3">Malaria</h3>
             <p className="line-clamp-3">{desc}</p>
           </Link>
         </SplideSlide>
         <SplideSlide className="p-5">
           <Link to={"/overviewpage"}>
             <img src={`/img/${pic}`} alt={`/img/${alt}`} className="w-full h-60 m-auto object-cover" />
-              <h3 className="my-3">{topic}</h3>
+              <h3 className="my-3">More</h3>
               <p className="line-clamp-3">{desc}</p>
           </Link>
         </SplideSlide>
         </Splide>
     )
+
 }

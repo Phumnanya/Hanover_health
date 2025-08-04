@@ -4,7 +4,7 @@ interface tiles {
     pic: string;
     alt: string;
     topic: string;
-    desc: string;
+    desc?: string;
 }
 
 export default function Diseases({pic, alt, topic, desc} : tiles) {
@@ -16,5 +16,6 @@ export default function Diseases({pic, alt, topic, desc} : tiles) {
         </>
     )
 }
+
 
 //<Image src={`/img/${pic}`} alt={`/img/${alt}`} boxSize={"xs"} objectFit={"cover"} />

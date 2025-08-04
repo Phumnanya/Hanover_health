@@ -4,14 +4,14 @@ import '@splidejs/react-splide/css';
 import { Link } from "react-router-dom";
 
 interface tiles1 {
-    pic: string;
-    alt: string;
-    topic: string;
-    desc: string;
+    pic?: string;
+    alt?: string;
+    topic?: string;
+    desc?: string;
 }
 
 
-export default function Carousel({pic?, alt?, topic?, desc?} : tiles1) {
+export default function Carousel({pic, alt, topic, desc} : tiles1) {
     return(
         <Splide
       options={{
@@ -56,3 +56,4 @@ export default function Carousel({pic?, alt?, topic?, desc?} : tiles1) {
     )
 
 }
+

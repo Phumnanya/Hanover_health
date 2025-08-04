@@ -43,7 +43,7 @@ export default function Carousel() {
         </SplideSlide>
         <SplideSlide className="p-5">
           <Link to={"/overviewpage"}>
-            <img src={"/img/malaria.jpg"} alt="more" className="w-full h-60 m-auto object-cover" />
+            <img src={"/img/more.jpg"} alt="more" className="w-full h-60 m-auto object-cover" />
               <h3 className="my-3">More</h3>
           </Link>
         </SplideSlide>
@@ -51,6 +51,7 @@ export default function Carousel() {
     )
 
 }
+
 
 
 

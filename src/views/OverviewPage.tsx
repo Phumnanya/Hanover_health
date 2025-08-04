@@ -38,7 +38,7 @@ function OverviewPage() {
                 <div className="w-full m-2 box-border">
                     <Link to={"/info/hepatitis_b"}>
                         <OV_Diseases_Flexbox
-                        pic="malaria.jpg" alt="Hepatits" topic="Hepatitis B"
+                        pic="hepatitis.jpg" alt="Hepatits" topic="Hepatitis B"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
                         ante eget aliquam venenatis. Donec congue at ligula in cursus"
                         />
@@ -48,7 +48,7 @@ function OverviewPage() {
                 <div className="w-full m-2 box-border">
                     <Link to={"/info/hiv"}>
                         <OV_Diseases_Flexbox
-                        pic="malaria.jpg" alt="HIV/AIDS" topic="HIV/AIDS"
+                        pic="hiv.jpg" alt="HIV/AIDS" topic="HIV/AIDS"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
                         ante eget aliquam venenatis. Donec congue at ligula in cursus"
                         />
@@ -68,7 +68,7 @@ function OverviewPage() {
                 <div className="w-full m-2 box-border">
                     <Link to={"/info/yellow_fever"}>
                         <OV_Diseases_Flexbox
-                        pic="malaria.jpg" alt="yellow_fever" topic="Yellow Fever"
+                        pic="yellow_fever.jpg" alt="yellow_fever" topic="Yellow Fever"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
                         ante eget aliquam venenatis. Donec congue at ligula in cursus"
                         />
@@ -78,7 +78,7 @@ function OverviewPage() {
                 <div className="w-full m-2 box-border">
                     <Link to={"/info/tuberculosis"}>
                         <OV_Diseases_Flexbox
-                        pic="malaria.jpg" alt="Tuberculosis" topic="Tuberculosis"
+                        pic="tuberculosis.jpg" alt="Tuberculosis" topic="Tuberculosis"
                         desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
                         ante eget aliquam venenatis. Donec congue at ligula in cursus"
                         />
@@ -114,5 +114,6 @@ function OverviewPage() {
         </>
     )
 }
+
 
 export default OverviewPage;

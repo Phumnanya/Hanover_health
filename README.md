@@ -1,48 +1,203 @@
 Hanover Healthcare
 
-A responsive communicable-disease information and data visualization web application built with React and TypeScript.
+Hanover Healthcare is a React + TypeScript public-health information and data-visualization application focused on communicable diseases.
 
-Hanover Healthcare is designed to make public-health information easier to explore by combining disease summaries with reported-case data, interactive visualizations, and a simple responsive interface.
+The project uses a two-part architecture:
+
+World Health Organization (WHO) GHO API
+                    ↓
+          Python / Flask Backend
+                    ↓
+        Data fetching + filtering
+                    ↓
+             REST API endpoint
+                    ↓
+        React / TypeScript Frontend
+                    ↓
+          TanStack React Query
+                    ↓
+       Tables + Plotly visualizations
+
+The frontend and backend are contained in this project, with the backend located in Hanover_backend-main/.
 
 Features
 
-Communicable disease information
+Responsive communicable-disease information website
 
-Disease summaries for Hepatitis B, HIV/AIDS, Malaria, Yellow Fever, and Tuberculosis.
+Dynamic disease information pages
 
-Disease-specific pages accessed through dynamic routes.
+Disease descriptions displayed according to the selected disease
 
-Dynamic disease data
+WHO disease statistics for:
 
-Fetches disease data from a deployed backend API.
+Hepatitis B
 
-Displays reported cases by country and year.
+HIV
 
-Uses React Query for asynchronous data fetching and loading/error states.
+Malaria
 
-Interactive data visualization
+Yellow Fever
 
-Bar-chart visualization of reported cases using Plotly.
+Tuberculosis
 
-Tabular presentation of the same case data.
+Reported-case data for:
 
-Responsive design
+Uganda (UGA)
 
-Responsive layouts for desktop and mobile screens.
+Kenya (KEN)
 
-Mobile disease carousel using Splide.
+Democratic Republic of the Congo (COD)
 
-Desktop/mobile search components.
+Data displayed in both:
 
-Reusable UI components
+Tables
 
-Navigation, footer, headings, disease cards, carousel, subscription section, and other interface elements are separated into reusable components.
+Interactive Plotly bar charts
 
-Tech Stack
+Dynamic year filtering in the backend through query parameters
+
+Loading and error states using Chakra UI
+
+Responsive desktop/mobile navigation
+
+Reusable React components
+
+Flask REST API
+
+CORS-enabled communication between frontend and backend
+
+Architecture
+
+1. WHO Data API
+
+The Python backend communicates directly with the World Health Organization Global Health Observatory (WHO GHO) API.
+
+The base API is:
+
+https://ghoapi.azureedge.net/api
+
+The backend uses WHO indicator codes to retrieve data for each disease.
+
+Indicator mapping
+
+Disease
+
+WHO Indicator
+
+Hepatitis B
+
+SDGHEPHBSAGPRV
+
+HIV
+
+HIV_0000000026
+
+Malaria
+
+MALARIA_EST_INCIDENCE
+
+Yellow Fever
+
+WHS3_50
+
+Tuberculosis
+
+MDG_0000000020
+
+2. Python / Flask Backend
+
+The backend is located at:
+
+Hanover_backend-main/
+
+Its main file is:
+
+Hanover_backend-main/app.py
+
+The backend is responsible for communicating with the WHO API instead of having the React application call the WHO API directly.
+
+It:
+
+Receives a request from the frontend.
+
+Determines the requested year range.
+
+Loops through the configured disease indicators.
+
+Requests WHO data for each configured country.
+
+Collects the responses.
+
+Packages the data into a consistent JSON structure.
+
+Returns the data to the React frontend.
+
+The backend currently focuses on:
+
+UGA → Uganda
+KEN → Kenya
+COD → Democratic Republic of the Congo
+
+Backend endpoint
+
+GET /fetch-data
+
+The deployed backend is currently:
+
+https://hanover-backend.onrender.com
+
+Therefore the frontend requests:
+
+https://hanover-backend.onrender.com/fetch-data
+
+Backend query parameters
+
+The /fetch-data endpoint accepts optional query parameters:
+
+start_year
+end_year
+
+For example:
+
+/fetch-data?start_year=2020&end_year=2024
+
+If they are not provided, the backend defaults to:
+
+start_year = 2020
+end_year   = 2024
+
+The backend then constructs WHO API requests similar to:
+
+https://ghoapi.azureedge.net/api/{indicator}?$filter=SpatialDim eq '{country}' and TimeDim ge {start_year} and TimeDim le {end_year}
+
+Backend Response Structure
+
+The Flask backend transforms the individual WHO responses into a structure that is easier for the frontend to consume.
+
+A simplified response looks like:
+
+[
+  {
+    "disease": "malaria",
+    "country": "UGA",
+    "start_year": 2020,
+    "end_year": 2024,
+    "cases": [
+      {
+        "TimeDim": 2020,
+        "NumericValue": 123
+      }
+    ]
+  }
+]
+
+This abstraction means the frontend does not need to understand the complete structure of the WHO API.
 
 Frontend
 
-React 18
+The frontend is built with:
+
+React
 
 TypeScript
 
@@ -56,7 +211,7 @@ Chakra UI
 
 Tailwind CSS
 
-Plotly / React Plotly
+Plotly
 
 Splide
 
@@ -64,282 +219,454 @@ Framer Motion
 
 AOS
 
-Data
+The frontend communicates with the Flask backend through the fetchDiseaseData() function.
 
-The application consumes disease data through a deployed backend endpoint:
+Located in:
+
+src/views/Disease.tsx
+
+The function currently requests:
 
 https://hanover-backend.onrender.com/fetch-data
 
-The project was developed around public-health data from sources such as the World Health Organization (WHO).
+and returns the JSON response to React Query.
 
-The backend service itself is not included in this repository/archive.
+Data Flow in the Frontend
 
-Project Structure
+The disease information page uses TanStack React Query:
 
-src/
-├── assets/
-│   ├── components/
-│   │   ├── Carousel.tsx
-│   │   ├── Designed-heading.tsx
-│   │   ├── Desktop-search-icon.tsx
-│   │   ├── Footer-links.tsx
-│   │   ├── Footer-logo.tsx
-│   │   ├── Head.tsx
-│   │   ├── Mission-img.tsx
-│   │   ├── Nav_logo.tsx
-│   │   ├── Overview-Flexbox.tsx
-│   │   ├── Search-icon-mobile.tsx
-│   │   ├── Subscribe.tsx
-│   │   └── Tiles-contents.tsx
-│   │
-│   └── plotly_data/
-│       ├── BarChart.tsx
-│       ├── PieChart.tsx
-│       ├── Sunburst.tsx
-│       └── Table.tsx
-│
-├── theme/
-│   └── MyTheme.tsx
-│
-├── views/
-│   ├── Data.tsx
-│   ├── description.ts
-│   ├── Disease.tsx
-│   ├── InfoPage.tsx
-│   ├── LandingPage.tsx
-│   ├── OverviewPage.tsx
-│   └── Test.tsx
-│
-├── App.tsx
-├── main.tsx
-├── App.css
-├── base.css
-└── index.css
+const { data, isLoading, error } = useQuery<DiseaseEntry[]>({
+    queryKey: ["diseaseData"],
+    queryFn: fetchDiseaseData,
+});
 
-public/
-└── Descriptions.json
-
-Application Routes
-
-The application currently contains the following routes:
-
-Route
-
-Purpose
-
-/
-
-Landing page
-
-/overviewpage
-
-Communicable disease overview
-
-/info/:diseaseName
-
-Dynamic disease information and statistics page
-
-/test
-
-Development/testing page
-
-Dynamic Disease Route
-
-Disease pages use React Router's URL parameter:
-
-<Route path="/info/:diseaseName" element={<InfoPage />} />
+The resulting data is then filtered according to the disease contained in the URL.
 
 For example:
 
 /info/malaria
-/info/hiv
-/info/yellow_fever
-/info/tuberculosis
 
-InfoPage.tsx reads the disease name with useParams() and uses it to filter the data returned by the backend.
+produces:
 
-Data Flow
+diseaseName = "malaria"
 
-The main disease-data flow is:
+The frontend then searches the API response for the corresponding disease.
 
-WHO/public-health data
-        ↓
-Backend API
-        ↓
-https://hanover-backend.onrender.com/fetch-data
-        ↓
-fetchDiseaseData()
-        ↓
-TanStack React Query
-        ↓
-InfoPage
-        ↓
-Filter data by disease
-        ↓
-Table + Plotly chart
+The selected data is subsequently used to generate:
 
-Disease descriptions are currently maintained separately in:
+Disease-specific statistics
+
+The reported-cases table
+
+The Plotly bar chart
+
+Disease Descriptions
+
+Disease descriptions are maintained separately from the statistical data.
+
+They are located in:
 
 src/views/description.ts
 
-This keeps descriptive content separate from the statistical data returned by the API.
+This file currently contains descriptions for:
+
+Hepatitis B
+
+HIV
+
+Malaria
+
+Yellow Fever
+
+Tuberculosis
+
+The information page imports these descriptions and selects the appropriate description using the disease name from the URL.
+
+For example:
+
+const description =
+    diseaseDescriptions[diseaseName?.toLowerCase() || ""];
+
+This means the application has two separate sources of disease information:
+
+WHO API
+   ↓
+Statistical data
+   ↓
+Cases / years / countries
+
+
+description.ts
+   ↓
+Human-readable disease information
+   ↓
+Disease summary
+
+This separation keeps the statistical data and editorial content independent.
+
+Interactive Disease Pages
+
+Disease pages use a dynamic React Router route:
+
+<Route
+    path="/info/:diseaseName"
+    element={<InfoPage />}
+/>
+
+Examples include:
+
+/info/hepatitis_b
+/info/hiv
+/info/malaria
+/info/yellow_fever
+/info/tuberculosis
+
+The InfoPage component retrieves the route parameter with:
+
+const { diseaseName } = useParams();
+
+It then uses that value to determine which disease data and description should be displayed.
+
+Data Visualization
+
+The project uses Plotly through:
+
+react-plotly.js
+
+The information page creates a bar chart showing reported cases across the supported countries and years.
+
+The chart uses:
+
+X-axis → Country
+Y-axis → Reported cases
+Groups → Year
+
+The same processed data is also displayed in a table.
+
+This provides both a visual overview and a detailed numerical representation of the data.
+
+Project Structure
+
+Hanover_health-main/
+│
+├── Hanover_backend-main/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── render.yaml
+│
+├── public/
+│   ├── Descriptions.json
+│   └── ...
+│
+├── src/
+│   ├── assets/
+│   │   ├── components/
+│   │   │   ├── Carousel.tsx
+│   │   │   ├── Designed-heading.tsx
+│   │   │   ├── Desktop-search-icon.tsx
+│   │   │   ├── Footer-links.tsx
+│   │   │   ├── Footer-logo.tsx
+│   │   │   ├── Head.tsx
+│   │   │   ├── Mission-img.tsx
+│   │   │   ├── Nav_logo.tsx
+│   │   │   ├── Overview-Flexbox.tsx
+│   │   │   ├── Search-icon-mobile.tsx
+│   │   │   ├── Subscribe.tsx
+│   │   │   └── Tiles-contents.tsx
+│   │   │
+│   │   └── plotly_data/
+│   │       ├── BarChart.tsx
+│   │       ├── PieChart.tsx
+│   │       ├── Sunburst.tsx
+│   │       └── Table.tsx
+│   │
+│   ├── theme/
+│   │   └── MyTheme.tsx
+│   │
+│   ├── views/
+│   │   ├── Data.tsx
+│   │   ├── description.ts
+│   │   ├── Disease.tsx
+│   │   ├── InfoPage.tsx
+│   │   ├── LandingPage.tsx
+│   │   ├── OverviewPage.tsx
+│   │   └── Test.tsx
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── App.css
+│   ├── base.css
+│   └── index.css
+│
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+├── vite.config.js
+└── index.html
 
 Getting Started
 
 Prerequisites
 
-Make sure you have:
+You need:
 
 Node.js
 
 npm
 
-You can check your versions with:
+Python 3
+
+pip
+
+Check Node and npm:
 
 node -v
 npm -v
 
-Installation
+Check Python:
 
-Clone the repository:
+python --version
 
-git clone <your-repository-url>
-cd Hanover_health
+or:
 
-Install dependencies:
+python3 --version
+
+Running the Frontend
+
+From the project root:
 
 npm install
 
-Run the development server
+Start the Vite development server:
 
 npm run dev
 
-Vite will provide a local development URL, normally similar to:
+The frontend will normally be available at:
 
 http://localhost:5173
 
-Build for production
+Running the Backend Locally
+
+Navigate into the backend:
+
+cd Hanover_backend-main
+
+Install the Python dependencies:
+
+pip install -r requirements.txt
+
+Start Flask:
+
+python app.py
+
+The backend will normally run at:
+
+http://127.0.0.1:5000
+
+The local endpoint is:
+
+http://127.0.0.1:5000/fetch-data
+
+The current frontend fetch function points to the deployed Render backend. If you want to use the local Flask server during development, update the frontend API URL accordingly.
+
+Python Backend Dependencies
+
+The backend uses:
+
+Flask==2.3.3
+gunicorn==21.2.0
+requests==2.31.0
+Flask-Cors==4.0.0
+
+Flask
+
+Provides the REST API.
+
+Requests
+
+Makes HTTP requests from the Python backend to the WHO GHO API.
+
+Flask-CORS
+
+Allows the React frontend and Flask backend to communicate across different origins.
+
+Gunicorn
+
+Runs the Flask application in production.
+
+Backend Deployment
+
+The backend is configured for deployment on Render.
+
+The deployment configuration is:
+
+Hanover_backend-main/render.yaml
+
+The service uses:
+
+env: python
+
+and starts with:
+
+gunicorn app:app
+
+The deployed backend currently uses:
+
+https://hanover-backend.onrender.com
+
+Frontend Deployment
+
+The frontend is a Vite application and can be deployed to platforms such as Vercel.
+
+Build the project with:
 
 npm run build
 
-Preview the production build
+Preview the production build locally with:
 
 npm run preview
 
-Lint the project
+For Vercel, connect the GitHub repository and use:
 
-npm run lint
+Build Command: npm run build
 
-Adding a Disease Description
+Available Frontend Scripts
 
-Disease descriptions are stored in:
+npm run dev
 
-src/views/description.ts
-
-The object uses the disease's URL-friendly name as its key:
-
-const diseaseDescriptions: Record<string, string> = {
-    malaria: `Malaria is a life-threatening disease...`,
-    hiv: `Human immunodeficiency virus (HIV) is...`,
-    yellow_fever: `Yellow fever is a viral disease...`,
-};
-
-The key should match the value used in the disease URL.
-
-For example:
-
-/info/yellow_fever
-
-should use:
-
-yellow_fever: `...`
-
-Adding a Disease to the Overview
-
-Disease cards are currently defined in the landing and overview pages and link to the dynamic disease route.
-
-Example:
-
-<Link to="/info/malaria">
-    <Diseases
-        pic="malaria.jpg"
-        alt="Malaria"
-        topic="Malaria"
-        desc="..."
-    />
-</Link>
-
-When adding a new disease, make sure the route name, description key, and disease name returned by the API are consistent.
-
-Deployment
-
-The project is a Vite frontend and can be deployed to platforms such as Vercel.
-
-For Vercel deployment:
-
-Push the project to GitHub.
-
-Import the repository into Vercel.
-
-Vercel should detect the Vite project automatically.
-
-Use the standard build command:
+Starts the development server.
 
 npm run build
 
-Deploy.
+Creates the production build.
 
-The frontend depends on the deployed backend API being available at:
+npm run preview
 
-https://hanover-backend.onrender.com/fetch-data
+Previews the production build.
 
-Important Notes
+npm run lint
 
-Backend dependency
+Runs ESLint.
 
-The backend is external to this frontend repository. If the backend service is unavailable, disease statistics on the information pages will not load.
+Why the Backend Exists
 
-Disease descriptions
+Instead of having the React application communicate directly with the WHO API, the project introduces a Flask backend between the frontend and WHO.
 
-Disease descriptions are currently static frontend content rather than being retrieved from the backend.
+This provides a useful separation of responsibilities:
 
-Images
+Frontend
 
-Several components reference images from the /public/img/ directory, for example:
+Responsible for:
 
-/img/malaria.jpg
-/img/hiv.jpg
-/img/hepatitis.jpg
-/img/yellow_fever.jpg
-/img/tuberculosis.jpg
+User interface
 
-Make sure these assets exist in the deployed project under:
+Routing
 
-public/img/
+Disease selection
+
+Data presentation
+
+Tables
+
+Charts
+
+Responsive design
+
+Backend
+
+Responsible for:
+
+Communicating with WHO
+
+Selecting the required WHO indicators
+
+Selecting the required countries
+
+Applying the year range
+
+Collecting data
+
+Returning a simplified response
+
+WHO API
+
+Responsible for:
+
+Providing the underlying public-health data
+
+The architecture can therefore be summarized as:
+
+                  ┌──────────────────────┐
+                  │   WHO GHO API        │
+                  │ Public Health Data    │
+                  └──────────┬───────────┘
+                             │
+                             │ HTTP
+                             ↓
+                  ┌──────────────────────┐
+                  │ Python / Flask API   │
+                  │                      │
+                  │ • Fetches WHO data   │
+                  │ • Filters countries   │
+                  │ • Filters years      │
+                  │ • Structures JSON    │
+                  └──────────┬───────────┘
+                             │
+                             │ REST API
+                             ↓
+                  ┌──────────────────────┐
+                  │ React + TypeScript   │
+                  │                      │
+                  │ • React Query        │
+                  │ • React Router       │
+                  │ • Disease pages      │
+                  │ • Tables             │
+                  │ • Plotly charts      │
+                  └──────────────────────┘
+
+Current Scope
+
+The backend currently retrieves data for five configured indicators and three countries.
+
+The year range defaults to:
+
+2020–2024
+
+The frontend currently presents the resulting information as disease-specific pages.
+
+The project can be extended by adding additional WHO indicators and countries to the backend configuration.
 
 Future Improvements
 
-Some potential improvements for the project include:
+Potential improvements include:
 
-Move disease information into a structured JSON/API data source.
+Move the backend URL into a frontend environment variable.
 
-Add more communicable diseases.
+Add environment-specific API configuration for local and production environments.
 
-Add prevention and treatment information to disease pages.
+Add more diseases and WHO indicators.
 
-Add more detailed data visualizations.
+Add more countries.
 
-Add date/year filters for the statistics.
+Allow users to select countries and year ranges from the UI.
 
-Improve accessibility across interactive components.
+Add additional Plotly visualizations.
 
-Add proper search functionality for diseases.
+Add disease prevention and treatment sections.
 
-Add automated tests.
+Move disease descriptions into a centralized data source.
 
-Add a dedicated backend repository and documentation.
+Add backend caching to reduce repeated WHO API requests.
 
-Add environment variables for configurable API endpoints.
+Add backend error handling and API response validation.
+
+Add automated frontend and backend tests.
+
+Add API documentation.
+
+Improve accessibility.
+
+Add proper search functionality.
 
 Author
 
@@ -347,4 +674,4 @@ Eustace Mbanefo
 
 Frontend Developer
 
-Built as a public-health information and data visualization project using React, TypeScript, and modern frontend technologies.
+Hanover Healthcare was developed as a public-health information and data-visualization project combining a React/TypeScript frontend with a Python/Flask data-processing backend and WHO public-health data.

@@ -7,7 +7,7 @@ import MobileSearch from "../assets/components/Search-icon-mobile";
 import FooterLinks from "../assets/components/Footer-links";
 import FooterLogo from "../assets/components/Footer-logo";
 import Subscribe from "../assets/components/Subscribe";
-import diseaseDescriptions from "./diseaseDescriptions";
+import diseaseDescriptions from "./description";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";

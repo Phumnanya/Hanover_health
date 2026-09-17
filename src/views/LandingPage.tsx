@@ -69,8 +69,9 @@ function LandingPage() {
                     <Link to={"/info/hepatitis_b"}>
                         <Diseases
                         pic="hepatitis.jpg" alt="Hepatitis B" topic="Hepatitis B"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Hepatitis is an inflammation of the liver that is caused by a variety of infectious viruses 
+                            and noninfectious agents. Five hepatitis viruses (hepatitis A virus (HAV), HBV, HCV, hepatitis D virus (HDV) 
+                            and hepatitis E virus (HEV)) can infect humans and cause hepatitis."
                         />
                     </Link>
                 </div>
@@ -79,8 +80,9 @@ function LandingPage() {
                     <Link to={"/info/hiv"}>
                         <Diseases
                         pic="hiv.jpg" alt="HIV/AIDS" topic="HIV/AIDS"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Human immunodeficiency virus (HIV) is an infection that attacks the body’s immune system, specifically the white 
+                            blood cells called CD4 cells. HIV destroys these CD4 cells, weakening a person’s immunity against opportunistic 
+                            infections, such as tuberculosis and fungal infections, severe bacterial infections and some cancers."
                         />
                     </Link>
                 </div>
@@ -89,8 +91,9 @@ function LandingPage() {
                     <Link to={"/info/malaria"}>
                         <Diseases
                         pic="malaria.jpg" alt="malaria" topic="Malaria"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Malaria is a life-threatening disease caused by parasites that are transmitted to people through the bites of 
+                            infected female Anopheles mosquitoes. It is preventable and curable. There are 5 parasite species that cause malaria in 
+                            humans, and 2 of these species – Plasmodium falciparum and Plasmodium vivax – pose the greatest threat."
                         />
                     </Link>
                 </div>

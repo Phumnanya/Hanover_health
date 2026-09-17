@@ -1,7 +1,7 @@
 //description for each disease
   const diseaseDescriptions: Record<string, string> = {
-
-    hepatitis: "Hepatitis is an inflammation of the liver that is caused by a variety of infectious viruses and non-infectious agents leading to a range of health problems, including severe liver damage and cancer, some of which can be fatal. There are 5 main strains of the hepatitis virus, referred to as types A, B, C, D and E. While they 
+    hepatitis: "Hepatitis is an inflammation of the liver that is caused by a variety of infectious viruses and non-infectious agents 
+      leading to a range of health problems, including severe liver damage and cancer, some of which can be fatal. There are 5 main strains of the hepatitis virus, referred to as types A, B, C, D and E. While they 
       can all cause liver disease, they differ in important ways including modes of transmission, severity of the illness, geographical distribution and prevention methods. 
         In particular, types B and C lead to chronic disease in hundreds of millions of people and together are the most common cause of liver cirrhosis, liver cancer and viral 
         hepatitis-related deaths. They are among the main infectious disease killers, causing an estimated 1.3 million deaths per year. An estimated 304 million people worldwide 

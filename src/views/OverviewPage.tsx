@@ -39,8 +39,10 @@ function OverviewPage() {
                     <Link to={"/info/hepatitis_b"}>
                         <OV_Diseases_Flexbox
                         pic="hepatitis.jpg" alt="Hepatits" topic="Hepatitis B"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Hepatitis is an inflammation of the liver that is caused by a variety of infectious viruses and non-infectious 
+                            agents leading to a range of health problems, including severe liver damage and cancer, some of which can be fatal. 
+                            There are 5 main strains of the hepatitis virus, referred to as types A, B, C, D and E. While they can all cause liver disease, 
+                            they differ in important ways including modes of transmission, severity of the illness, geographical distribution and prevention methods."
                         />
                     </Link>
                 </div>
@@ -49,8 +51,9 @@ function OverviewPage() {
                     <Link to={"/info/hiv"}>
                         <OV_Diseases_Flexbox
                         pic="hiv.jpg" alt="HIV/AIDS" topic="HIV/AIDS"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Human immunodeficiency virus (HIV) is an infection that attacks the body’s immune system, specifically the white blood cells called CD4 cells. 
+                            HIV destroys these CD4 cells, weakening a person’s immunity against opportunistic infections, such as tuberculosis and fungal infections, severe 
+                            bacterial infections and some cancers."
                         />
                     </Link>
                 </div>
@@ -59,8 +62,9 @@ function OverviewPage() {
                     <Link to={"/info/malaria"}>
                         <OV_Diseases_Flexbox
                         pic="malaria.jpg" alt="Malaria" topic="Malaria"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Malaria is a life-threatening disease caused by parasites that are transmitted to people through the bites of 
+                            infected female Anopheles mosquitoes. It is preventable and curable. There are 5 parasite species that cause malaria 
+                            in humans, and 2 of these species – Plasmodium falciparum and Plasmodium vivax – pose the greatest threat."
                         />
                     </Link>
                 </div>
@@ -69,8 +73,10 @@ function OverviewPage() {
                     <Link to={"/info/yellow_fever"}>
                         <OV_Diseases_Flexbox
                         pic="yellow_fever.jpg" alt="yellow_fever" topic="Yellow Fever"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="Yellow fever is a viral disease that is transmitted to humans by the bites of infected mosquitoes. 
+                            It is prone to epidemics and is preventable with a vaccine. These day-biting mosquitoes breed around houses (domestic), 
+                            in forests or jungles (wild), or in both habitats (semi-domestic). Yellow fever is a high-impact, high-threat disease, with 
+                            a risk of international spread, representing a potential threat to global health security."
                         />
                     </Link>
                 </div>
@@ -79,8 +85,10 @@ function OverviewPage() {
                     <Link to={"/info/tuberculosis"}>
                         <OV_Diseases_Flexbox
                         pic="tuberculosis.jpg" alt="Tuberculosis" topic="Tuberculosis"
-                        desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula 
-                        ante eget aliquam venenatis. Donec congue at ligula in cursus"
+                        desc="TB is caused by bacteria (Mycobacterium tuberculosis) and it most often affects the lungs. TB is spread through the air when 
+                            people with lung TB cough, sneeze or spit. A person needs to inhale only a few germs to become infected. About a quarter of the 
+                            global population is estimated to have been infected with TB bacteria, but most people will not go on to develop TB disease and 
+                            some will clear the infection. Those who are infected but not (yet) ill with the disease cannot transmit it."
                         />
                     </Link>
                 </div>
